@@ -9,4 +9,3 @@
 
 )
 
-PIPPO si chiama minni
