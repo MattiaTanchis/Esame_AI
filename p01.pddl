@@ -1,4 +1,4 @@
-(define (problem Test20x) (:domain RatVSCat)
+(define (problem Test20x) (:domain StealthyMoves)
 
     ; -----------------
     ; |   |   |   |   |
@@ -58,9 +58,9 @@
         (move x19 x18)
         (move x20 x19)
 
-        (covertlyOccupied x4 y1)
-        (covertlyOccupied x3 y3)
-        (covertlyOccupied x4 y3)
+        (full x4 y1)
+        (full x3 y3)
+        (full x4 y3)
         
     )
 
