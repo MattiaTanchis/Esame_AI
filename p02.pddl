@@ -35,25 +35,30 @@
         (move y7 y6)
         (move y8 y7)
         
-        (hidden gerry x7 y2)
+        (hidden gerry x2 y7)
 
 
-        (hidden cat1 x7 y4)
-        (hidden cat1 x8 y4)
+        (hidden cat1 x4 y7)
+        (hidden cat1 x4 y8)
         
-        (hidden cat2 x3 y4)
+        (hidden cat2 x4 y3)
         (hidden cat2 x4 y4)
 
-        (hidden cat3 x3 y2)
+        (hidden cat3 x2 y3)
         (hidden cat3 x3 y3)
         
     
         
-        (full x7 y2)
-        (full x7 y4)
-        (full x8 y4)      
-        (full x3 y4)
-        (full x4 y4)         
+        (full x2 y7)
+
+        (full x4 y7)
+        (full x4 y8) 
+
+        (full x4 y3)
+        (full x4 y4)  
+
+        (full x2 y3)  
+        (full x3 y3)     
           
         
         

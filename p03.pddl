@@ -35,38 +35,42 @@
         (move y7 y6)
         (move y8 y7)
         
-        (hidden gerry x7 y2)
+        (hidden gerry x2 y7)
 
 
-        (hidden cat1 x7 y4)
-        (hidden cat1 x8 y4)
+        (hidden cat1 x4 y7)
+        (hidden cat1 x4 y8)
         
-        (hidden cat2 x3 y4)
+        (hidden cat2 x4 y3)
         (hidden cat2 x4 y4)
 
-        (hidden cat3 x5 y4)
-        (hidden cat3 x5 y5)
+        (hidden cat3 x4 y4)
+        (hidden cat3 x4 y5)
         
-        (hidden cat4 x6 y3)
-        (hidden cat4 x6 y4)
+        (hidden cat4 x3 y6)
+        (hidden cat4 x4 y6)
     
         
-        (full x7 y2)
-        (full x7 y4)
-        (full x8 y4)      
-        (full x3 y4)
+        (full x2 y7)
+
+        (full x4 y7)
+        (full x4 y8)      
+        
+        (full x4 y3)
         (full x4 y4)     
-        (full x5 y4)
+        
+        (full x4 y5)
         (full x5 y5)    
-        (full x6 y3)
-        (full x6 y4)
+       
+        (full x3 y6)
+        (full x4 y6)
           
         
         
     )
 
     (:goal
-        (hidden gerry x3 y8)
+        (hidden gerry x8 y3)
 
     )
 
