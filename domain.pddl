@@ -9,65 +9,69 @@
     )
 
     (:predicates
-        (hidden ?v - creature ?x - location ?y - location)
+        (on ?v - creature ?x - location ?y - location)
         (full ?x - location ?y - location)
         (move ?b - location ?a - location)
     )
 
-    ; rat = 1 location
-    ; Parameters:
-    ; - ?r : the rat to be moved
-    ; - ?x ?y : the current position of the rat
-    ; - ?next_x : the x coordinate where the rat will be moved
+    ; rat = 1 location 
+    ; Questi parametri, Precondizioni e effetti sono definiti per la funzione sottostante (rat-left-or-right)
+    ; Parametri:
+    ; - ?r : il topo da spostare
+    ; - ?x ?y : la posizione attuale del topo che desideriamo spostare
+    ; - ?next_x : la coordinata x dove dovrebbe andare il topo dopo lo spostamento
     ;
-    ; Cryptic Preconditions
-    ; - The rat has to be in ?x ?y
-    ; - The position ?next_x ?y should be undisclosed (not covertly occupied)
-    ; - If ?next_x is the undisclosed move of ?x, the rat will move down;
-    ; - If ?x is the undisclosed move of ?next_x, the rat will move up;
+    ;  Precondizioni
+    ; - il topo si deve trovare nel punto di coordinate x y passate come parametri
+    ; - Il punto di coordinata next_x y non deve essere occupato da nessuno
+    ; - se il punto di coordinata next_x y è libero il topo verrà spostato verso dx o sx 
     ;
-    ; Covert Effects:
-    ; - The rat will be at ?next_x ?y, which results to be covertly occupied, 
-    ;   and will not be at ?x ?y, which will be not covertly occupied.
+    ; Effetti:
+    ; - Il topo sarà nella posizione di coordinata next_x y che diventerà occupata, la posizione precedente diventerà libera
+    ;   
 
     (:action rat-left-or-right
         :parameters (?r - rat ?y - location ?x - location ?next_x - location)
         :precondition (and
-            (hidden ?r ?x ?y)
+            (on ?r ?x ?y)
             (not (full ?next_x ?y))
             (or 
-                (move ?next_x ?x) ; The rat will move up
-                (move ?x ?next_x) ; The rat will move down
+                (move ?next_x ?x) 
+                (move ?x ?next_x) 
             )
         )
         :effect (and
-            (hidden ?r ?next_x ?y)
+            (on ?r ?next_x ?y)
             (full ?next_x ?y)
-            (not (hidden ?r ?x ?y))
+            (not (on ?r ?x ?y))
             (not (full ?x ?y))
         )
     )
+; spiegazione funzione: Le precondizioni sono --> il topo si deve trovare in x y (on ?r ?x ?y) e la posizione 
+; next_x y non deve essere piena (not (full ?next_x ?y)) e il topo si spostarà verso dx o verso sx 
+; (move ?next_x ?x) (move ?x ?next_x).
+; effetti: il topo si troverà nella posizione next_x y e questa posizione diventerà piena (on ?r ?next_x ?y) (full ?next_x ?y)
+; e la posizione precedente del topo verrà aggiornata diventando libera (not (on ?r ?x ?y)) (not (full ?x ?y))
+
 
     ; rat = 1 location
-    ; Parameters:
-    ; - ?r : the rat to be moved
-    ; - ?x ?y : the current position of the rat
-    ; - ?next_y : the y coordinate where the rat will be moved
+    ; Parametri:
+    ; - ?r : il topo da spostare
+    ; - ?x ?y : la posizione attuale del topo che desideriamo spostare
+    ; - ?next_y : la coordinata y dove dovrebbe andare il topo dopo lo spostamento
     ;
-    ; Cryptic Preconditions
-    ; - The rat has to be in ?x ?y
-    ; - The position ?x ?next_y should be undisclosed (not covertly occupied)
-    ; - If ?next_y is the undisclosed move of ?y, the rat will move right;
-    ; - If ?y is the undisclosed move of ?next_y, the rat will move left;
+    ;   Precondizioni
+    ; - il topo si deve trovare nel punto di coordinate x y passate come parametri
+    ; -  Il punto di coordinata x next_y non deve essere occupato da nessuno
+    ; - se il punto di coordinata x next_y è libero il topo verrà spostato verso sopra o sotto 
     ;
-    ; Covert Effects:
-    ; - The rat will be at ?x ?next_y, which results to be covertly occupied.
-    ;   It won't be at ?x ?y anymore, so it will result to be undisclosed (not covertly occupied).
+    ;  Effetti:
+    ; - Il topo sarà nella posizione di coordinata next_x y che diventerà occupata, la posizione precedente diventerà libera
 
     (:action rat-up-or-down
         :parameters (?r - rat ?x - location ?y - location ?next_y - location)
         :precondition (and
-            (hidden ?r ?x ?y)
+            (on ?r ?x ?y)
             (not (full ?x ?next_y))
             (or 
                 (move ?next_y ?y) ; The rat will move to the left
@@ -76,9 +80,9 @@
 
         )
         :effect (and
-            (hidden ?r ?x ?next_y)
+            (on ?r ?x ?next_y)
             (full ?x ?next_y)
-            (not (hidden ?r ?x ?y))
+            (not (on ?r ?x ?y))
             (not (full ?x ?y))
         )
     )
@@ -106,8 +110,8 @@
     (:action cat-left-or-right
         :parameters (?c - cat ?y - location ?current_x1 - location ?current_x2 - location ?next_x - location)
         :precondition (and
-            (hidden ?c ?current_x1 ?y)
-            (hidden ?c ?current_x2 ?y)
+            (on ?c ?current_x1 ?y)
+            (on ?c ?current_x2 ?y)
             (not (full ?next_x ?y))
             (not (= ?current_x1 ?current_x2))
             (move ?current_x2 ?current_x1) 
@@ -119,10 +123,10 @@
                     (move ?current_x1 ?next_x) ; The cat will move up
                 )
                 (and
-                    (hidden ?c ?next_x ?y)
-                    (hidden ?c ?current_x1 ?y)
+                    (on ?c ?next_x ?y)
+                    (on ?c ?current_x1 ?y)
                     (full ?next_x ?y)
-                    (not (hidden ?c ?current_x2 ?y))
+                    (not (on ?c ?current_x2 ?y))
                     (not (full ?current_x2 ?y))
                 )
             )
@@ -132,10 +136,10 @@
                     (move ?next_x ?current_x2) ; The cat will move down
                 )
                 (and
-                    (hidden ?c ?next_x ?y)
-                    (hidden ?c ?current_x2 ?y)
+                    (on ?c ?next_x ?y)
+                    (on ?c ?current_x2 ?y)
                     (full ?next_x ?y)
-                    (not (hidden ?c ?current_x1 ?y))
+                    (not (on ?c ?current_x1 ?y))
                     (not (full ?current_x1 ?y))
                 )
             )
@@ -166,8 +170,8 @@
     (:action cat-up-or-down
         :parameters (?c - cat ?x - location ?current_y1 - location ?current_y2 - location ?next_y - location)
         :precondition (and
-            (hidden ?c ?x ?current_y1)
-            (hidden ?c ?x ?current_y2)
+            (on ?c ?x ?current_y1)
+            (on ?c ?x ?current_y2)
             (not (full ?x ?next_y))
             (not (= ?current_y1 ?current_y2))
             (move ?current_y2 ?current_y1)
@@ -177,10 +181,10 @@
             (when
                 (and (move ?current_y1 ?next_y)) ; The cat will move to the left
                 (and
-                    (hidden ?c ?x ?next_y)
-                    (hidden ?c ?x ?current_y1)
+                    (on ?c ?x ?next_y)
+                    (on ?c ?x ?current_y1)
                     (full ?x ?next_y)
-                    (not (hidden ?c ?x ?current_y2))
+                    (not (on ?c ?x ?current_y2))
                     (not (full ?x ?current_y2))
                 )
             )
@@ -188,10 +192,10 @@
             (when
                 (and (move ?next_y ?current_y2)) ; The cat will move to the right
                 (and
-                    (hidden ?c ?x ?next_y)
-                    (hidden ?c ?x ?current_y2)
+                    (on ?c ?x ?next_y)
+                    (on ?c ?x ?current_y2)
                     (full ?x ?next_y)
-                    (not (hidden ?c ?x ?current_y1))
+                    (not (on ?c ?x ?current_y1))
                     (not (full ?x ?current_y1))
                 )
             )

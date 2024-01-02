@@ -35,20 +35,20 @@
         (move y7 y6)
         (move y8 y7)
         
-        (hidden gerry x2 y7)
+        (on gerry x2 y7)
 
 
-        (hidden cat1 x4 y7)
-        (hidden cat1 x4 y8)
+        (on cat1 x4 y7)
+        (on cat1 x4 y8)
         
-        (hidden cat2 x4 y3)
-        (hidden cat2 x4 y4)
+        (on cat2 x4 y3)
+        (on cat2 x4 y4)
 
-        (hidden cat3 x4 y4)
-        (hidden cat3 x4 y5)
+        (on cat3 x4 y4)
+        (on cat3 x4 y5)
         
-        (hidden cat4 x3 y6)
-        (hidden cat4 x4 y6)
+        (on cat4 x3 y6)
+        (on cat4 x4 y6)
     
         
         (full x2 y7)
@@ -70,7 +70,7 @@
     )
 
     (:goal
-        (hidden gerry x8 y3)
+        (on gerry x8 y3)
 
     )
 

@@ -13,13 +13,13 @@
         x1 y1 x2 y2 x3 y3 x4 y4 - location    )
     
     (:init
-        (hidden gerry x1 y4)
+        (on gerry x1 y4)
 
-        (hidden cat1 x3 y3)
-        (hidden cat1 x3 y4)
+        (on cat1 x3 y3)
+        (on cat1 x3 y4)
 
-        (hidden cat2 x1 y2)
-        (hidden cat2 x2 y2)
+        (on cat2 x1 y2)
+        (on cat2 x2 y2)
 
         (move y2 y1)
         (move y3 y2)
@@ -39,7 +39,7 @@
     )
 
     (:goal
-        (hidden gerry x4 y4)
+        (on gerry x4 y4)
     )
 
 )
