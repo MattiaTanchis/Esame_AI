@@ -12,6 +12,7 @@
         (on ?v - creature ?x - location ?y - location)
         (full ?x - location ?y - location)
         (move ?b - location ?a - location)
+        (visited ?r - creature ?x - location ?y - location)
     )
 
     ; rat = 1 location 
@@ -45,6 +46,7 @@
             (full ?next_x ?y)
             (not (on ?r ?x ?y))
             (not (full ?x ?y))
+            (visited ?r ?next_x ?y)
         )
     )
 ; spiegazione funzione: Le precondizioni sono --> il topo si deve trovare in x y (on ?r ?x ?y) e la posizione 
@@ -84,8 +86,10 @@
             (full ?x ?next_y)
             (not (on ?r ?x ?y))
             (not (full ?x ?y))
+            (visited ?r ?x ?next_y)
         )
     )
+    
 
     ; cat = 2 locations
     ; Parameters:
