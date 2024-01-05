@@ -1,4 +1,4 @@
-(define (problem problem8x8) (:domain StealthyMoves)
+(define (problem problem8x8) (:domain TommyVsGerry)
 
     ; -----------------------------------
     ;     1   2   3   4   5   6   7   8

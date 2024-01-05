@@ -1,4 +1,4 @@
-(define (domain StealthyMoves)
+(define (domain TommyVsGerry)
 
     (:requirements :equality :disjunctive-preconditions :negative-preconditions :typing :conditional-effects
     )

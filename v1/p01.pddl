@@ -1,4 +1,4 @@
-(define (problem 4x4) (:domain StealthyMoves)
+(define (problem 4x4) (:domain TommyVsGerry)
 
     ; -----------------
     ; |   |   |   |   |
