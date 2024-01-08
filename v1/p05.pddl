@@ -11,7 +11,7 @@
     ; | xx|   |   |   |   |   | c | 1 |
     ; ---------------------------------
 
-(:object
+(:objects
 	gerry - rat
 	cat1 cat2 cat3 cat4 cat5 cat6 - cat
 	x1 x2 x3 x4 x5 x6 x7 x8 y1 y2 y3 y4 y5 y6 y7 y8 - location  )
@@ -21,14 +21,19 @@
 
 	(on cat1 x7 y8)
 	(on cat1 x8 y8)
+	
 	(on cat2 x2 y6)
 	(on cat2 x3 y6)
-  	(on cat3 x4 y1)
+  	
+	(on cat3 x4 y1)
 	(on cat3 x5 y1)
+	
 	(on cat4 x6 y4)
 	(on cat4 x6 y5)
+	
 	(on cat5 x8 y2)
 	(on cat5 x8 y3)
+	
 	(on cat6 x2 y1)
 	(on cat6 x2 y2)
 
@@ -49,17 +54,24 @@
 	(move y8 y7)
 
 	(full x4 y4)
+	
 	(full x7 y8)
 	(full x8 y8)
+	
 	(full x2 y6)
 	(full x3 y6)
-  	(full x4 y1)
+  	
+	(full x4 y1)
 	(full x5 y1)
+	
 	(full x6 y4)
 	(full x6 y5)
+	
 	(full x8 y2)
 	(full x8 y3)
+	
 	(full x2 y1)
+	
 	(full x2 y2)
 )
 

@@ -44,8 +44,8 @@
         (on cat2 x4 y3)
         (on cat2 x4 y4)
 
-        (on cat3 x4 y4)
         (on cat3 x4 y5)
+        (on cat3 x5 y5)
         
         (on cat4 x3 y6)
         (on cat4 x4 y6)

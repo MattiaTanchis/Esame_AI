@@ -13,7 +13,7 @@
         x1 y1 x2 y2 x3 y3 x4 y4 - location    )
     
     (:init
-        (on gerry x1 y4)
+        (on gerry x4 y1)
 
         (on cat1 x3 y3)
         (on cat1 x3 y4)
@@ -28,7 +28,7 @@
         (move x4 x3)
         
 
-        (full x4 y1)
+        (full x1 y4)
         (full x3 y3)
         (full x3 y4)
     
