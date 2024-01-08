@@ -30,7 +30,7 @@
         (move x4 x3)
         
 
-        (full x4 y1)
+        (full x1 y4)
         (full x3 y3)
         (full x3 y4)
         (full x1 y2)
